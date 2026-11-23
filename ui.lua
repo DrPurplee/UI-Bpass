@@ -6610,6 +6610,7 @@ function UI.new(config)
         filterGames()
     end
     self:SetGames(games)
+    self:SetStatus("Inactif")
     searchBox:GetPropertyChangedSignal('Text'):Connect(filterGames)
 
     actionButton.MouseEnter:Connect(function()
@@ -6643,7 +6644,7 @@ function UI.new(config)
             if alive then
                 busy=false
                 actionTitle.Text=tostring(config.ButtonText or 'LANCER LE BYPASS')
-                self:SetStatus(ok and 'SIMULATION COMPLETE' or 'DEMO ERROR',ok and 'success' or 'error')
+                self:SetStatus(     ok and "Actif" or "Inactif",     ok and "success" or nil )
             end
         end)
     end)
